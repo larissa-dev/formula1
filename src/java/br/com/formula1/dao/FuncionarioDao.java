@@ -24,9 +24,9 @@ public class FuncionarioDao {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            Funcionario servico = (Funcionario)session.createQuery("from Funcionario where id = " + id).uniqueResult();
+            Funcionario funcionario = (Funcionario)session.createQuery("from Funcionario where id = " + id).uniqueResult();
             session.getTransaction().commit();
-            return servico;
+            return funcionario;
         }catch(Exception e){
             e.printStackTrace();
             session.getTransaction().rollback();
@@ -34,11 +34,11 @@ public class FuncionarioDao {
         }
     }
     
-    public boolean inserir(Funcionario servico){
+    public boolean inserir(Funcionario funcionario){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            session.save(servico);
+            session.save(funcionario);
             session.getTransaction().commit();
             return true;
         }catch(Exception e){
@@ -48,11 +48,11 @@ public class FuncionarioDao {
         }
     }    
     
-     public boolean alterar(Funcionario servico){
+     public boolean alterar(Funcionario funcionario){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            session.update(servico);
+            session.update(funcionario);
             session.getTransaction().commit();
             return true;
         }catch(Exception e){
@@ -62,11 +62,11 @@ public class FuncionarioDao {
         }
     }    
      
-      public boolean excluir(Funcionario servico){
+      public boolean excluir(Funcionario funcionario){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            session.delete(servico);
+            session.delete(funcionario);
             session.getTransaction().commit();
             return true;
         }catch(Exception e){

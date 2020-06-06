@@ -26,9 +26,9 @@ public class PilotoDao {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            Piloto servico = (Piloto)session.createQuery("from Piloto where id = " + id).uniqueResult();
+            Piloto piloto = (Piloto)session.createQuery("from Piloto where id = " + id).uniqueResult();
             session.getTransaction().commit();
-            return servico;
+            return piloto;
         }catch(Exception e){
             e.printStackTrace();
             session.getTransaction().rollback();
@@ -36,11 +36,11 @@ public class PilotoDao {
         }
     }
     
-    public boolean inserir(Piloto servico){
+    public boolean inserir(Piloto piloto){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            session.save(servico);
+            session.save(piloto);
             session.getTransaction().commit();
             return true;
         }catch(Exception e){
@@ -50,11 +50,11 @@ public class PilotoDao {
         }
     }    
     
-     public boolean alterar(Piloto servico){
+     public boolean alterar(Piloto piloto){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            session.update(servico);
+            session.update(piloto);
             session.getTransaction().commit();
             return true;
         }catch(Exception e){
@@ -64,11 +64,11 @@ public class PilotoDao {
         }
     }    
      
-      public boolean excluir(Piloto servico){
+      public boolean excluir(Piloto piloto){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            session.delete(servico);
+            session.delete(piloto);
             session.getTransaction().commit();
             return true;
         }catch(Exception e){
