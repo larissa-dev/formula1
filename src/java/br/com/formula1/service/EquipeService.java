@@ -16,15 +16,15 @@ public class EquipeService {
         return equipeDao.consultar(id);
     }
     
-    public boolean inserir(Equipe gp){
-        return equipeDao.inserir(gp);
+    public boolean inserir(Equipe equipe){
+        return equipeDao.inserir(equipe);
     }
     
-    public boolean alterar(Equipe gp){
-        return equipeDao.alterar(gp);
+    public boolean alterar(Equipe equipe){
+        return equipeDao.alterar(equipe);
     }
     
-    public boolean excluir(Equipe gp){
-        return equipeDao.excluir(gp);
+    public boolean excluir(Equipe equipe){
+        return equipeDao.excluir(equipe);
     }
 }

@@ -15,16 +15,16 @@ public class FuncionarioService {
         return funcionarioDao.consultar(id);
     }
     
-    public boolean inserir(Funcionario gp){
-        return funcionarioDao.inserir(gp);
+    public boolean inserir(Funcionario funcionario){
+        return funcionarioDao.inserir(funcionario);
     }
     
-    public boolean alterar(Funcionario gp){
-        return funcionarioDao.alterar(gp);
+    public boolean alterar(Funcionario funcionario){
+        return funcionarioDao.alterar(funcionario);
     }
     
-    public boolean excluir(Funcionario gp){
-        return funcionarioDao.excluir(gp);
+    public boolean excluir(Funcionario funcionario){
+        return funcionarioDao.excluir(funcionario);
     }
     
 }

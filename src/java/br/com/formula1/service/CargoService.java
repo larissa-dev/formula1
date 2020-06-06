@@ -16,15 +16,15 @@ public class CargoService {
         return cargoDao.consultar(id);
     }
     
-    public boolean inserir(Cargo gp){
-        return cargoDao.inserir(gp);
+    public boolean inserir(Cargo cargo){
+        return cargoDao.inserir(cargo);
     }
     
-    public boolean alterar(Cargo gp){
-        return cargoDao.alterar(gp);
+    public boolean alterar(Cargo cargo){
+        return cargoDao.alterar(cargo);
     }
     
-    public boolean excluir(Cargo gp){
-        return cargoDao.excluir(gp);
+    public boolean excluir(Cargo cargo){
+        return cargoDao.excluir(cargo);
     }
 }

@@ -6,26 +6,26 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
-            <p:panel id="panel" header="Grandes Prêmios de Fórmula 1" style="margin: 20px;">
-                <p:dataTable id="datatable" value="#{gpMB.gps}" var="gp"
+            <p:panel id="panel" header="Cargos" style="margin: 20px;">
+                <p:dataTable id="datatable" value="#{cargoMB.cargos}" var="cargo"
                              emptyMessage="Nenhum registro encontrado" style="margin: 10px;"
                              paginator="true" paginatorPosition="bottom" rows="10">
-                    <p:column headerText="Nome" sortBy="#{gp.nome}">
-                        <h:outputText value="#{gp.nome}"/>
+                    <p:column headerText="Nome" sortBy="#{cargo.nome}">
+                        <h:outputText value="#{cargo.nome}"/>
                     </p:column>
-                    <p:column headerText="Pais" sortBy="#{gp.pais}">
-                        <h:outputText value="#{gp.pais}"/>
+                    <p:column headerText="Descrição" sortBy="#{cargo.descricao}">
+                        <h:outputText value="#{cargo.descricao}"/>
                     </p:column>
                     <p:column headerText="Editar" width="80" style="text-align: center;">
-                        <p:commandButton action="#{gpMB.buscaDados(gp)}" icon="ui-icon-pencil" title="Editar"/>
+                        <p:commandButton action="#{cargoMB.buscaDados(cargo)}" icon="ui-icon-pencil" title="Editar"/>
                     </p:column>
                     <p:column headerText="Excluir" width="80" style="text-align: center;">
-                        <p:commandButton action="#{gpMB.excluir(gp)}" id="excluir"  icon="ui-icon-trash" title="Excluir"
+                        <p:commandButton action="#{cargoMB.excluir(cargo)}" id="excluir"  icon="ui-icon-trash" title="Excluir"
                                        onclick="if (!confirm('Confirma a exclusão?')) return false" update=":form:growl"/>
                     </p:column>
                 </p:dataTable>
                 <div align="center">
-                    <p:commandButton id="novo" value="Novo" action="#{gpMB.novo()}" />
+                    <p:commandButton id="novo" value="Novo" action="#{cargoMB.novo()}" />
                 </div>
             </p:panel>
         </ui:define>

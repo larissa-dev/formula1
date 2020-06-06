@@ -17,16 +17,16 @@ public class PilotoService {
         return pilotoDao.consultar(id);
     }
     
-    public boolean inserir(Piloto gp){
-        return pilotoDao.inserir(gp);
+    public boolean inserir(Piloto piloto){
+        return pilotoDao.inserir(piloto);
     }
     
-    public boolean alterar(Piloto gp){
-        return pilotoDao.alterar(gp);
+    public boolean alterar(Piloto piloto){
+        return pilotoDao.alterar(piloto);
     }
     
-    public boolean excluir(Piloto gp){
-        return pilotoDao.excluir(gp);
+    public boolean excluir(Piloto piloto){
+        return pilotoDao.excluir(piloto);
     }
     
 }
