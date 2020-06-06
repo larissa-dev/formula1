@@ -13,14 +13,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 
+
 @Entity
-@Table(name="gp")
-public class Gp implements Serializable{
+@Table(name="piloto")
+public class Piloto implements Serializable{
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -31,19 +34,25 @@ public class Gp implements Serializable{
     private String nome;
     
     @NotNull
-    @Column(name="pais")
-    private String pais;
+    @Column(name="pontuacao")
+    private Integer pontuacao;
     
-   @OneToMany(mappedBy="id")
-   private List<Corrida> corridas;
+    @ManyToOne
+    @JoinColumn(name="idEquipe", referencedColumnName="id")
+    private Equipe equipe;
     
-    public Gp(){
+    @OneToMany(mappedBy="id")
+    private List<Corrida> corridas;
+
+    public Piloto() {
     }
 
-    public Gp(Integer id, String nome, String pais) {
+    public Piloto(Integer id, String nome, Integer pontuacao, Equipe equipe, List<Corrida> corridas) {
         this.id = id;
         this.nome = nome;
-        this.pais = pais;
+        this.pontuacao = pontuacao;
+        this.equipe = equipe;
+        this.corridas = corridas;
     }
 
     public Integer getId() {
@@ -62,12 +71,20 @@ public class Gp implements Serializable{
         this.nome = nome;
     }
 
-    public String getPais() {
-        return pais;
+    public Integer getPontuacao() {
+        return pontuacao;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setPontuacao(Integer pontuacao) {
+        this.pontuacao = pontuacao;
+    }
+
+    public Equipe getEquipe() {
+        return equipe;
+    }
+
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
     }
 
     public List<Corrida> getCorridas() {
@@ -78,12 +95,10 @@ public class Gp implements Serializable{
         this.corridas = corridas;
     }
 
-    
-    
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -98,7 +113,7 @@ public class Gp implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Gp other = (Gp) obj;
+        final Piloto other = (Piloto) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -107,7 +122,7 @@ public class Gp implements Serializable{
 
     @Override
     public String toString() {
-        return "Gp{" + "id=" + id + ", nome=" + nome + ", pais=" + pais + '}';
+        return "Piloto{" + "id=" + id + ", nome=" + nome + ", pontuacao=" + pontuacao + ", equipe=" + equipe + ", corridas=" + corridas + '}';
     }
-
+    
 }

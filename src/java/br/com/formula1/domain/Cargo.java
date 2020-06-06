@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.formula1.domain;
 
 import java.io.Serializable;
@@ -17,10 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
-@Table(name="gp")
-public class Gp implements Serializable{
+@Table(name="cargo")
+public class Cargo implements Serializable{
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -31,19 +26,19 @@ public class Gp implements Serializable{
     private String nome;
     
     @NotNull
-    @Column(name="pais")
-    private String pais;
+    @Column(name="descricao")
+    private String descricao;
     
-   @OneToMany(mappedBy="id")
-   private List<Corrida> corridas;
+    @OneToMany(mappedBy="id")
+    private List<Funcionario> funcionarios;
     
-    public Gp(){
+    public Cargo(){
     }
 
-    public Gp(Integer id, String nome, String pais) {
+    public Cargo(Integer id, String nome, String descricao) {
         this.id = id;
         this.nome = nome;
-        this.pais = pais;
+        this.descricao = descricao;
     }
 
     public Integer getId() {
@@ -62,28 +57,26 @@ public class Gp implements Serializable{
         this.nome = nome;
     }
 
-    public String getPais() {
-        return pais;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public List<Corrida> getCorridas() {
-        return corridas;
+     public List<Funcionario> getFuncionarios() {
+        return funcionarios;
     }
 
-    public void setCorridas(List<Corrida> corridas) {
-        this.corridas = corridas;
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 47 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -98,7 +91,7 @@ public class Gp implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Gp other = (Gp) obj;
+        final Cargo other = (Cargo) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -107,7 +100,8 @@ public class Gp implements Serializable{
 
     @Override
     public String toString() {
-        return "Gp{" + "id=" + id + ", nome=" + nome + ", pais=" + pais + '}';
+        return "Cargo{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", funcionarios=" + funcionarios + '}';
     }
+    
 
 }

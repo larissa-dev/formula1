@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `formula1` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `formula1`;
 -- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
 -- Host: localhost    Database: formula1
@@ -50,7 +48,7 @@ DROP TABLE IF EXISTS `corrida`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `corrida` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `data` date NOT NULL,
+  `data` datetime NOT NULL,
   `local` varchar(45) NOT NULL,
   `idPiloto` int(11) NOT NULL,
   `posicaoPiloto` int(11) NOT NULL,
@@ -188,4 +186,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-06 13:08:52
+-- Dump completed on 2020-06-06 14:37:14

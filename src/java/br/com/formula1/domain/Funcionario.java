@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.formula1.domain;
 
 import java.io.Serializable;
@@ -13,14 +9,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name="gp")
-public class Gp implements Serializable{
+@Table(name="funcionario")
+public class Funcionario implements Serializable{
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -31,19 +29,26 @@ public class Gp implements Serializable{
     private String nome;
     
     @NotNull
-    @Column(name="pais")
-    private String pais;
+    @Column(name="descricao")
+    private String descricao;
     
-   @OneToMany(mappedBy="id")
-   private List<Corrida> corridas;
+    @ManyToOne
+    @JoinColumn(name="idCargo", referencedColumnName="id")
+    private Cargo cargo;
     
-    public Gp(){
+    @ManyToOne
+    @JoinColumn(name="idEquipe", referencedColumnName="id")
+    private Equipe equipe;
+    
+    public Funcionario(){
     }
 
-    public Gp(Integer id, String nome, String pais) {
+    public Funcionario(Integer id, String nome, String descricao, Cargo cargo, Equipe equipe) {
         this.id = id;
         this.nome = nome;
-        this.pais = pais;
+        this.descricao = descricao;
+        this.cargo = cargo;
+        this.equipe = equipe;
     }
 
     public Integer getId() {
@@ -62,28 +67,36 @@ public class Gp implements Serializable{
         this.nome = nome;
     }
 
-    public String getPais() {
-        return pais;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public List<Corrida> getCorridas() {
-        return corridas;
+    public Cargo getCargo() {
+        return cargo;
     }
 
-    public void setCorridas(List<Corrida> corridas) {
-        this.corridas = corridas;
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
     }
 
-    
-    
+    public Equipe getEquipe() {
+        return equipe;
+    }
+
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
+    }
+
+   
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -98,7 +111,7 @@ public class Gp implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Gp other = (Gp) obj;
+        final Funcionario other = (Funcionario) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -107,7 +120,6 @@ public class Gp implements Serializable{
 
     @Override
     public String toString() {
-        return "Gp{" + "id=" + id + ", nome=" + nome + ", pais=" + pais + '}';
-    }
-
+        return "Funcionario{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", cargo=" + cargo + ", equipe=" + equipe + '}';
+    } 
 }
