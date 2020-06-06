@@ -83,12 +83,4 @@ public class GpController implements Serializable{
     public void setGps(List<Gp> gps) {
         this.gps = gps;
     }
-
-    public GpService getGpService() {
-        return gpService;
-    }
-
-    public void setGpService(GpService gpService) {
-        this.gpService = gpService;
-    }
 }

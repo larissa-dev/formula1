@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
             <p:panel id="panel" header="Lista de Grandes Prêmios de Fórmula 1" style="margin: 20px;">
@@ -10,24 +11,23 @@
                              emptyMessage="Nenhum registro encontrado" style="margin: 10px;"
                              paginator="true" paginatorPosition="bottom" rows="10">
                     <p:column headerText="Nome" sortBy="#{gp.nome}">
-                        #{gp.nome}
+                        <h:outputText value="#{gp.nome}"/>
                     </p:column>
                     <p:column headerText="Pais" sortBy="#{gp.pais}">
-                        #{gp.pais}
+                        <h:outputText value="#{gp.pais}"/>
                     </p:column>
                     <p:column headerText="Editar" width="80" style="text-align: center;">
-                        <p:commandButton  icon="ui-icon-pencil" title="Editar"/>
+                        <p:commandButton action="#{gpMB.buscaDados(gp)}" icon="ui-icon-pencil" title="Editar"/>
                     </p:column>
                     <p:column headerText="Excluir" width="80" style="text-align: center;">
-                        <p:commandButton id="excluir"  icon="ui-icon-trash" title="Excluir"
+                        <p:commandButton action="#{gpMB.excluir(gp)}" id="excluir"  icon="ui-icon-trash" title="Excluir"
                                        onclick="if (!confirm('Confirma a exclusão?')) return false" update=":form:growl"/>
                     </p:column>
                 </p:dataTable>
                 <div align="center">
-                    <p:commandButton id="novo" value="Novo" />
+                    <p:commandButton id="novo" value="Novo" action="#{gpMB.novo()}" />
                 </div>
             </p:panel>
         </ui:define>
     </ui:composition>
 </html>
-

@@ -41,18 +41,18 @@ public class Piloto implements Serializable{
     @JoinColumn(name="idEquipe", referencedColumnName="id")
     private Equipe equipe;
     
-    @OneToMany(mappedBy="id")
-    private List<Corrida> corridas;
+    //@OneToMany(mappedBy="id")
+    //private List<Corrida> corridas;
 
     public Piloto() {
     }
 
-    public Piloto(Integer id, String nome, Integer pontuacao, Equipe equipe, List<Corrida> corridas) {
+    public Piloto(Integer id, String nome, Integer pontuacao, Equipe equipe) {
         this.id = id;
         this.nome = nome;
         this.pontuacao = pontuacao;
         this.equipe = equipe;
-        this.corridas = corridas;
+        //this.corridas = corridas;
     }
 
     public Integer getId() {
@@ -87,13 +87,13 @@ public class Piloto implements Serializable{
         this.equipe = equipe;
     }
 
-    public List<Corrida> getCorridas() {
-        return corridas;
-    }
+    //public List<Corrida> getCorridas() {
+      //  return corridas;
+    //}
 
-    public void setCorridas(List<Corrida> corridas) {
-        this.corridas = corridas;
-    }
+    //public void setCorridas(List<Corrida> corridas) {
+      //  this.corridas = corridas;
+    //}
 
     @Override
     public int hashCode() {
@@ -122,7 +122,7 @@ public class Piloto implements Serializable{
 
     @Override
     public String toString() {
-        return "Piloto{" + "id=" + id + ", nome=" + nome + ", pontuacao=" + pontuacao + ", equipe=" + equipe + ", corridas=" + corridas + '}';
+        return "Piloto{" + "id=" + id + ", nome=" + nome + ", pontuacao=" + pontuacao + ", equipe=" + equipe + '}';
     }
     
 }

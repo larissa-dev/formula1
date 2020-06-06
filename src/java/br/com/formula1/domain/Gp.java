@@ -34,8 +34,8 @@ public class Gp implements Serializable{
     @Column(name="pais")
     private String pais;
     
-   @OneToMany(mappedBy="id")
-   private List<Corrida> corridas;
+   //@OneToMany(mappedBy="id")
+   //private List<Corrida> corridas;
     
     public Gp(){
     }
@@ -70,13 +70,13 @@ public class Gp implements Serializable{
         this.pais = pais;
     }
 
-    public List<Corrida> getCorridas() {
-        return corridas;
-    }
+    //public List<Corrida> getCorridas() {
+      //  return corridas;
+    //}
 
-    public void setCorridas(List<Corrida> corridas) {
-        this.corridas = corridas;
-    }
+    //public void setCorridas(List<Corrida> corridas) {
+      //  this.corridas = corridas;
+    //}
 
     
     
