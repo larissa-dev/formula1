@@ -12,7 +12,6 @@ public class GpService {
         return gpDao.listar();
     }
     
-    
     public Gp consultar(Integer id){
         return gpDao.consultar(id);
     }
