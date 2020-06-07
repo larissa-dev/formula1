@@ -28,10 +28,6 @@ public class Funcionario implements Serializable{
     @Column(name="nome")
     private String nome;
     
-    @NotNull
-    @Column(name="descricao")
-    private String descricao;
-    
     @ManyToOne
     @JoinColumn(name="idCargo", referencedColumnName="id")
     private Cargo cargo;
@@ -43,10 +39,9 @@ public class Funcionario implements Serializable{
     public Funcionario(){
     }
 
-    public Funcionario(Integer id, String nome, String descricao, Cargo cargo, Equipe equipe) {
+    public Funcionario(Integer id, String nome, Cargo cargo, Equipe equipe) {
         this.id = id;
         this.nome = nome;
-        this.descricao = descricao;
         this.cargo = cargo;
         this.equipe = equipe;
     }
@@ -65,14 +60,6 @@ public class Funcionario implements Serializable{
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public Cargo getCargo() {
@@ -120,7 +107,7 @@ public class Funcionario implements Serializable{
 
     @Override
     public String toString() {
-        return "Funcionario{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", cargo=" + cargo + ", equipe=" + equipe + '}';
+        return "Funcionario{" + "id=" + id + ", nome=" + nome + ", cargo=" + cargo + ", equipe=" + equipe + '}';
     }
 
 }

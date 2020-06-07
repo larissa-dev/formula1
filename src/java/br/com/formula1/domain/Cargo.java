@@ -101,7 +101,6 @@ public class Cargo implements Serializable{
     @Override
     public String toString() {
         return "Cargo{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + '}';
-    }
-    
+    }    
 
 }

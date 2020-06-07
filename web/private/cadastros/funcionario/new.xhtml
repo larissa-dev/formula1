@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
-            <p:panel id="panel" header="Funcionarios" style="margin: 20px;">
+            <p:panel id="panel" header="Funcionários" style="margin: 20px;">
                 <div class="ui-g">
                     <div class="ui-g-6">
                         <label>Nome</label><br/>
@@ -18,7 +18,7 @@
                         <p:selectOneMenu id="cargo" value="#{funcionarioMB.funcionario.cargo}" style="width: 98%"
                                          required="true" requiredMessage="Cargo é obrigatória"
                                          converter="entityConverter">
-                            <f:selectItems value="#{funcionarioMB.funcionarios}" var="cargo"
+                            <f:selectItems value="#{cargoMB.cargos}" var="cargo"
                                            itemLabel="#{cargo.nome}" itemValue="#{cargo}"/>
                         </p:selectOneMenu>
                     </div>
@@ -27,10 +27,11 @@
                         <p:selectOneMenu id="equipe" value="#{funcionarioMB.funcionario.equipe}" style="width: 98%"
                                          required="true" requiredMessage="Equipe é obrigatória"
                                          converter="entityConverter">
-                            <f:selectItems value="#{funcionarioMB.funcionarios}" var="equipe"
+                            <f:selectItems value="#{equipeMB.equipes}" var="equipe"
                                            itemLabel="#{equipe.nome}" itemValue="#{equipe}"/>
                         </p:selectOneMenu>
                     </div>
+                    
                 </div>
                 <br/>
                 <div align="center">
