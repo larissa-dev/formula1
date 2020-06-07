@@ -38,7 +38,7 @@ public class Piloto implements Serializable{
     private Integer pontuacao;
     
     @ManyToOne
-    @JoinColumn(name="idEquipe", referencedColumnName="id")
+    @JoinColumn(name="idEquipePiloto", referencedColumnName="id")
     private Equipe equipe;
     
     //@OneToMany(mappedBy="id")

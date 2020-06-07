@@ -32,17 +32,17 @@ public class Equipe implements Serializable{
     @OneToMany(mappedBy="id")
     private List<Funcionario> funcionarios;
    
-    //@OneToMany(mappedBy="id")
-    //private List<Piloto> pilotos;
+    @OneToMany(mappedBy="id")
+    private List<Piloto> pilotos;
 
     public Equipe() {
     }
 
-    public Equipe(Integer id, String nome, List<Funcionario> funcionario ) {
+    public Equipe(Integer id, String nome, List<Funcionario> funcionario, List<Piloto> piloto ) {
         this.id = id;
         this.nome = nome;
         this.funcionarios = funcionarios;
-        //this.pilotos = pilotos;
+        this.pilotos = pilotos;
     }
 
     public Integer getId() {
@@ -69,14 +69,14 @@ public class Equipe implements Serializable{
         this.funcionarios = funcionarios;
     }
 
-   /* public List<Piloto> getPilotos() {
+    public List<Piloto> getPilotos() {
         return pilotos;
     }
 
     public void setPilotos(List<Piloto> pilotos) {
         this.pilotos = pilotos;
     }
-*/
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -104,9 +104,7 @@ public class Equipe implements Serializable{
 
     @Override
     public String toString() {
-        return "Equipe{" + "id=" + id + ", nome=" + nome + ", funcionarios=" + funcionarios + '}';
-    }
-
-   
+        return "Equipe{" + "id=" + id + ", nome=" + nome + ", funcionarios=" + funcionarios + ", pilotos=" + pilotos + '}';
+    }   
     
 }
