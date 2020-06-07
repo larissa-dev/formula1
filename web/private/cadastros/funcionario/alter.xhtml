@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/private/template/template.xhtml">
+        <ui:define name="conteudo">
+            <p:panel id="panel" header="Funcionários" style="margin: 20px;">
+                <div class="ui-g">
+                    <div class="ui-g-4">
+                        <label>Nome</label><br/>
+                        <p:inputText id="nome" value="#{funcionarioMB.gp.nome}" style="width: 98%;"
+                                     required="true" requiredMessage="Nome é obrigatório!"/>
+                    </div>
+                    <div class="ui-g-4">    
+                        <label>País</label><br/>
+                        <p:inputText id="pais" value="#{funcionarioMB.gp.pais}" style="width: 98%;"
+                                     required="true" requiredMessage="País é obrigatório!"/>
+                    </div>
+                    <div class="ui-g-4">    
+                        <label>Cargo</label><br/>
+                        <p:inputText id="pais" value="#{funcionarioMB.gp.pais}" style="width: 98%;"
+                                     required="true" requiredMessage="País é obrigatório!"/>
+                    </div>
+                    <div class="ui-g-4">    
+                        <label>Equipe</label><br/>
+                        <p:inputText id="pais" value="#{funcionarioMB.gp.pais}" style="width: 98%;"
+                                     required="true" requiredMessage="País é obrigatório!"/>
+                    </div>
+                    
+                </div>
+                <br/>
+                <div align="center">
+                    <p:commandButton action="#{funcionarioMB.alterar()}" value="Alterar" update="growl" style="margin-right: 10px;"/>
+                    <p:commandButton action="#{funcionarioMB.cancelar()}" value="Cancelar" immediate="true"/>
+                </div>
+                <br/>
+            </p:panel>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -5,23 +5,18 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
-            <p:panel id="panel" header="Cargos" style="margin: 20px;">
+            <p:panel id="panel" header="Equipe" style="margin: 20px;">
                 <div class="ui-g">
-                    <div class="ui-g-4">
+                    <div class="ui-g-8">
                         <label>Nome</label><br/>
-                        <p:inputText id="descricao" value="#{cargoMB.cargo.nome}" style="width: 98%;"
+                        <p:inputText id="nome" value="#{equipeMB.equipe.nome}" style="width: 98%;"
                                      required="true" requiredMessage="Nome é obrigatório!"/>
-                    </div>
-                <div class="ui-g-8">
-                        <label>Descrição</label>
-                        <p:inputText id="preco" value="#{cargoMB.cargo.descricao}" style="width: 98%;"
-                                     required="true" requiredMessage="Descrição é obrigatório"/>
                     </div>
                 </div>
                 <br/>
                 <div align="center">
-                    <p:commandButton action="#{cargoMB.salvar()}" value="Salvar" update="growl" style="margin-right: 10px;"/>
-                    <p:commandButton action="#{cargoMB.cancelar()}" value="Cancelar" immediate="true"/>
+                    <p:commandButton action="#{equipeMB.alterar()}" value="Alterar" update="growl" style="margin-right: 10px;"/>
+                    <p:commandButton action="#{equipeMB.cancelar()}" value="Cancelar" immediate="true"/>
                 </div>
                 <br/>
             </p:panel>

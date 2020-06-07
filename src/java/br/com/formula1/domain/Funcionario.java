@@ -91,7 +91,7 @@ public class Funcionario implements Serializable{
         this.equipe = equipe;
     }
 
-   
+  
 
     @Override
     public int hashCode() {
@@ -121,5 +121,6 @@ public class Funcionario implements Serializable{
     @Override
     public String toString() {
         return "Funcionario{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", cargo=" + cargo + ", equipe=" + equipe + '}';
-    } 
+    }
+
 }

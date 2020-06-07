@@ -29,8 +29,8 @@ public class Cargo implements Serializable{
     @Column(name="descricao")
     private String descricao;
     
-   // @OneToMany(mappedBy="id")
-    //private List<Funcionario> funcionarios;
+   @OneToMany(mappedBy="id")
+    private List<Funcionario> funcionarios;
     
     public Cargo(){
     }
@@ -65,13 +65,13 @@ public class Cargo implements Serializable{
         this.descricao = descricao;
     }
 
-    // public List<Funcionario> getFuncionarios() {
-      //  return funcionarios;
-    //}
+    public List<Funcionario> getFuncionarios() {
+      return funcionarios;
+    }
 
-    //public void setFuncionarios(List<Funcionario> funcionarios) {
-      //  this.funcionarios = funcionarios;
-    //}
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+      this.funcionarios = funcionarios;
+    }
 
     @Override
     public int hashCode() {
