@@ -40,22 +40,28 @@ public class PilotoController implements Serializable{
     }
     
     public String salvar(){
-        if (pilotoService.inserir(piloto)){
-            UtilMensagens.mensagemSucesso("Sucesso", "Piloto salvo com sucesso!");
-            this.listar();
-            return "list.xhtml?faces-redirect=true";
+        if (verificaPiloto()){
+            if (pilotoService.inserir(piloto)){
+                UtilMensagens.mensagemSucesso("Sucesso", "Piloto salvo com sucesso!");
+                this.listar();
+                return "list.xhtml?faces-redirect=true";
+            }
+            UtilMensagens.mensagemErro("Erro", "Ocorreu um erro ao salvar o piloto"); 
         }
-        UtilMensagens.mensagemErro("Erro", "Ocorreu um erro ao salvar o piloto");
+        UtilMensagens.mensagemErro("Erro", "Equipe esta completa!"); 
         return null;
     }
     
     public String alterar(){
-        if (pilotoService.alterar(piloto)){
-            UtilMensagens.mensagemSucesso("Sucesso", "Piloto alterado com sucesso!");
-            this.listar();
-            return "list.xhtml?faces-redirect=true";
+        if (verificaPiloto()){
+            if (pilotoService.alterar(piloto)){
+                UtilMensagens.mensagemSucesso("Sucesso", "Piloto alterado com sucesso!");
+                this.listar();
+                return "list.xhtml?faces-redirect=true";
+            }
+            UtilMensagens.mensagemErro("Erro", "Ocorreu um erro ao alterar o piloto");
         }
-        UtilMensagens.mensagemErro("Erro", "Ocorreu um erro ao alterar o piloto");
+        UtilMensagens.mensagemErro("Erro", "Equipe esta completa!"); 
         return null;
     }
     
@@ -67,6 +73,19 @@ public class PilotoController implements Serializable{
         }
         UtilMensagens.mensagemErro("Erro", "Ocorreu um erro ao excluir o piloto");
         return null;
+    }
+    
+    public Boolean verificaPiloto(){
+        int quantEquipe = 0;
+        List<Piloto> pilotosEquipe;
+        pilotosEquipe = pilotoService.listarEquipePiloto(piloto.getEquipe().getId());
+        for (Piloto p: pilotosEquipe){
+                quantEquipe++;
+        }
+        if (quantEquipe < 2){
+            return true;
+        }
+        return false;
     }
 
     public Piloto getPiloto() {

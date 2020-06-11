@@ -19,6 +19,13 @@
                     </div>
                     
                 </div>
+                <div class="ui-g">
+                    <div class="ui-g-8">
+                        <label>Local da realização do GP</label><br/>
+                        <p:inputText id="local" value="#{gpMB.gp.local}" style="width: 98%;"
+                                     required="true" requiredMessage="Local é obrigatório!"/>
+                    </div>
+                </div>
                 <br/>
                 <div align="center">
                     <p:commandButton action="#{gpMB.alterar()}" value="Alterar" update="growl" style="margin-right: 10px;"/>

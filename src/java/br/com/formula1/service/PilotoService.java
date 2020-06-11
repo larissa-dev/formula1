@@ -12,6 +12,9 @@ public class PilotoService {
     public List<Piloto> listar(){
         return pilotoDao.listar();
     }
+    public List<Piloto> listarEquipePiloto(Integer idEquipePiloto){
+        return pilotoDao.listarEquipePiloto(idEquipePiloto);
+    }
     
     public Piloto consultar(Integer id){
         return pilotoDao.consultar(id);

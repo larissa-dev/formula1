@@ -34,6 +34,10 @@ public class Gp implements Serializable{
     @Column(name="pais")
     private String pais;
     
+    @NotNull
+    @Column(name="local")
+    private String local;
+    
    //@OneToMany(mappedBy="id")
    //private List<Corrida> corridas;
     
@@ -69,7 +73,15 @@ public class Gp implements Serializable{
     public void setPais(String pais) {
         this.pais = pais;
     }
+    
+    public String getLocal() {
+        return local;
+    }
 
+    public void setLocal(String local) {
+        this.local = local;
+    }
+    
     //public List<Corrida> getCorridas() {
       //  return corridas;
     //}
@@ -78,8 +90,6 @@ public class Gp implements Serializable{
       //  this.corridas = corridas;
     //}
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -107,7 +117,7 @@ public class Gp implements Serializable{
 
     @Override
     public String toString() {
-        return "Gp{" + "id=" + id + ", nome=" + nome + ", pais=" + pais + '}';
+        return "Gp{" + "id=" + id + ", nome=" + nome + ", pais=" + pais + ", local=" + local +'}';
     }
 
 }

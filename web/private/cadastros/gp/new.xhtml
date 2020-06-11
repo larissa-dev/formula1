@@ -9,14 +9,21 @@
                 <div class="ui-g">
                     <div class="ui-g-8">
                         <label>Nome</label><br/>
-                        <p:inputText id="descricao" value="#{gpMB.gp.nome}" style="width: 98%;"
+                        <p:inputText id="nome" value="#{gpMB.gp.nome}" style="width: 98%;"
                                      required="true" requiredMessage="Nome é obrigatório!"/>
                     </div>
-                <div class="ui-g-4">
+                    <div class="ui-g-4">
                         <label>País</label>
-                        <p:inputText id="preco" value="#{gpMB.gp.pais}" style="width: 98%;"
+                        <p:inputText id="pais" value="#{gpMB.gp.pais}" style="width: 98%;"
                                      required="true" requiredMessage="País é obrigatório"/>
                     </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-8">
+                        <label>Local da realização do GP</label><br/>
+                        <p:inputText id="local" value="#{gpMB.gp.local}" style="width: 98%;"
+                                     required="true" requiredMessage="Local é obrigatório!"/>
+                    </div> 
                 </div>
                 <br/>
                 <div align="center">
