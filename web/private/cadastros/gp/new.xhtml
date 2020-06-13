@@ -24,6 +24,11 @@
                         <p:inputText id="local" value="#{gpMB.gp.local}" style="width: 98%;"
                                      required="true" requiredMessage="Local é obrigatório!"/>
                     </div> 
+                    <div class="ui-g-4">
+                        <label>Data</label>
+                        <p:calendar id="data" value="#{gpMB.gp.data}" pattern="dd/MM/yyyy"
+                                    disabled="#{gpMB.gp.data}" mask="99/99/9999"/>
+                    </div>
                 </div>
                 <br/>
                 <div align="center">

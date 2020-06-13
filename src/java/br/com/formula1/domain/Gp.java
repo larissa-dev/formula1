@@ -6,14 +6,13 @@
 package br.com.formula1.domain;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -38,18 +37,20 @@ public class Gp implements Serializable{
     @Column(name="local")
     private String local;
     
-   //@OneToMany(mappedBy="id")
-   //private List<Corrida> corridas;
-    
-    public Gp(){
+    @Column(name="data")
+    private Date data;
+
+    public Gp() {
     }
 
-    public Gp(Integer id, String nome, String pais) {
+    public Gp(Integer id, String nome, String pais, String local, Date data) {
         this.id = id;
         this.nome = nome;
         this.pais = pais;
+        this.local = local;
+        this.data = data;
     }
-
+    
     public Integer getId() {
         return id;
     }
@@ -73,7 +74,7 @@ public class Gp implements Serializable{
     public void setPais(String pais) {
         this.pais = pais;
     }
-    
+
     public String getLocal() {
         return local;
     }
@@ -81,19 +82,19 @@ public class Gp implements Serializable{
     public void setLocal(String local) {
         this.local = local;
     }
-    
-    //public List<Corrida> getCorridas() {
-      //  return corridas;
-    //}
 
-    //public void setCorridas(List<Corrida> corridas) {
-      //  this.corridas = corridas;
-    //}
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.id);
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -117,7 +118,7 @@ public class Gp implements Serializable{
 
     @Override
     public String toString() {
-        return "Gp{" + "id=" + id + ", nome=" + nome + ", pais=" + pais + ", local=" + local +'}';
+        return "Gp{" + "id=" + id + ", nome=" + nome + ", pais=" + pais + ", local=" + local + ", data=" + data + '}';
     }
-
+    
 }
