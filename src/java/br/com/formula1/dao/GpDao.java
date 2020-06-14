@@ -1,4 +1,3 @@
-
 package br.com.formula1.dao;
 
 import br.com.formula1.domain.Gp;
@@ -6,13 +5,13 @@ import br.com.formula1.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
 
-
 public class GpDao {
-       public List<Gp> listar(){
+    
+    public List<Gp> listar(){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            List<Gp> gp = session.createQuery("from Gp order by nome").list();
+            List<Gp> gp = session.createQuery("from Gp order by data").list();
             session.getTransaction().commit();
             return gp;
         }catch(Exception e){
@@ -36,17 +35,17 @@ public class GpDao {
         }
     }
     
-    public boolean inserir(Gp gp){
+    public Integer inserir(Gp gp){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            session.save(gp);
+            Integer id=(Integer)session.save(gp);
             session.getTransaction().commit();
-            return true;
+            return id;
         }catch(Exception e){
             e.printStackTrace();
             session.getTransaction().rollback();
-            return false;
+            return null;
         }
     }    
     
@@ -76,6 +75,5 @@ public class GpDao {
             session.getTransaction().rollback();
             return false;
         }
-    }    
+    }
 }
-

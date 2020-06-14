@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
 @Table(name="funcionario")
 public class Funcionario implements Serializable{
@@ -28,11 +27,11 @@ public class Funcionario implements Serializable{
     @Column(name="nome")
     private String nome;
     
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name="idCargo", referencedColumnName="id")
     private Cargo cargo;
     
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name="idEquipe", referencedColumnName="id")
     private Equipe equipe;
     

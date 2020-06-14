@@ -4,6 +4,7 @@ package br.com.formula1.domain;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,10 +30,10 @@ public class Equipe implements Serializable{
     @Column(name="nome")
     private String nome;
     
-    @OneToMany(mappedBy="id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="id")
     private List<Funcionario> funcionarios;
    
-    @OneToMany(mappedBy="id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="id")
     private List<Piloto> pilotos;
 
     public Equipe() {

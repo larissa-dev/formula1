@@ -8,6 +8,7 @@ package br.com.formula1.domain;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
 
 
 @Entity
@@ -33,26 +33,22 @@ public class Piloto implements Serializable{
     @Column(name="nome")
     private String nome;
     
-    @NotNull
-    @Column(name="pontuacao")
-    private Integer pontuacao;
-    
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name="idEquipePiloto", referencedColumnName="id")
     private Equipe equipe;
     
-    //@OneToMany(mappedBy="id")
-    //private List<Corrida> corridas;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "piloto")
+    private List<Corrida> corridas;
+    
 
     public Piloto() {
     }
 
-    public Piloto(Integer id, String nome, Integer pontuacao, Equipe equipe) {
+    public Piloto(Integer id, String nome, Equipe equipe, List<Corrida> corridas) {
         this.id = id;
         this.nome = nome;
-        this.pontuacao = pontuacao;
         this.equipe = equipe;
-        //this.corridas = corridas;
+        this.corridas = corridas;
     }
 
     public Integer getId() {
@@ -71,14 +67,6 @@ public class Piloto implements Serializable{
         this.nome = nome;
     }
 
-    public Integer getPontuacao() {
-        return pontuacao;
-    }
-
-    public void setPontuacao(Integer pontuacao) {
-        this.pontuacao = pontuacao;
-    }
-
     public Equipe getEquipe() {
         return equipe;
     }
@@ -87,13 +75,13 @@ public class Piloto implements Serializable{
         this.equipe = equipe;
     }
 
-    //public List<Corrida> getCorridas() {
-      //  return corridas;
-    //}
+    public List<Corrida> getCorridas() {
+        return corridas;
+    }
 
-    //public void setCorridas(List<Corrida> corridas) {
-      //  this.corridas = corridas;
-    //}
+    public void setCorridas(List<Corrida> corridas) {
+        this.corridas = corridas;
+    }
 
     @Override
     public int hashCode() {
@@ -122,7 +110,7 @@ public class Piloto implements Serializable{
 
     @Override
     public String toString() {
-        return "Piloto{" + "id=" + id + ", nome=" + nome + ", pontuacao=" + pontuacao + ", equipe=" + equipe + '}';
+        return "Piloto{" + "id=" + id + ", nome=" + nome + ", equipe=" + equipe + ", corridas=" + corridas + '}';
     }
-    
+
 }

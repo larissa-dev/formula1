@@ -22,6 +22,9 @@
                             <f:convertDateTime pattern="dd/MM/yyyy"/>
                         </h:outputText>
                     </p:column>
+                    <p:column headerText="Imprimir" width="80" style="text-align: center;">
+                        <p:commandButton action="#{gpMB.imprimirGP(gp)}" icon="ui-icon-document" title="Imprimir"/>
+                    </p:column>
                     <p:column headerText="Editar" width="80" style="text-align: center;">
                         <p:commandButton action="#{gpMB.buscaDados(gp)}" icon="ui-icon-pencil" title="Editar"/>
                     </p:column>

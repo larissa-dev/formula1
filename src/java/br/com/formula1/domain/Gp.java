@@ -1,18 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.formula1.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -20,7 +18,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name="gp")
 public class Gp implements Serializable{
-    
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
@@ -32,13 +29,16 @@ public class Gp implements Serializable{
     @NotNull
     @Column(name="pais")
     private String pais;
-    
+      
     @NotNull
     @Column(name="local")
     private String local;
     
     @Column(name="data")
     private Date data;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="gp")
+    private List<Corrida> corridas;
 
     public Gp() {
     }
@@ -91,6 +91,14 @@ public class Gp implements Serializable{
         this.data = data;
     }
 
+    public List<Corrida> getCorridas() {
+        return corridas;
+    }
+
+    public void setCorridas(List<Corrida> corridas) {
+        this.corridas = corridas;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;

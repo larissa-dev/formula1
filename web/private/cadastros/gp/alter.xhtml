@@ -2,35 +2,81 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
             <p:panel id="panel" header="Grandes Prêmios de Fórmula 1" style="margin: 20px;">
                 <div class="ui-g">
                     <div class="ui-g-8">
-                        <label>Nome do GP</label><br/>
+                        <label>Nome</label><br/>
                         <p:inputText id="nome" value="#{gpMB.gp.nome}" style="width: 98%;"
                                      required="true" requiredMessage="Nome é obrigatório!"/>
                     </div>
-                    <div class="ui-g-4">    
-                        <label>País</label><br/>
+                    <div class="ui-g-4">
+                        <label>País</label>
                         <p:inputText id="pais" value="#{gpMB.gp.pais}" style="width: 98%;"
-                                     required="true" requiredMessage="País é obrigatório!"/>
+                                     required="true" requiredMessage="País é obrigatório"/>
                     </div>
-                    
                 </div>
                 <div class="ui-g">
                     <div class="ui-g-8">
                         <label>Local da realização do GP</label><br/>
                         <p:inputText id="local" value="#{gpMB.gp.local}" style="width: 98%;"
                                      required="true" requiredMessage="Local é obrigatório!"/>
-                    </div>
+                    </div> 
                     <div class="ui-g-4">
-                        <label>Data</label>
-                        <p:calendar id="data" value="#{gpMB.gp.data}" pattern="dd/MM/yyyy"
-                                    disabled="#{gpMB.gp.data}" mask="99/99/9999"/>
+                        <label>Data</label><br/>
+                        <p:calendar id="data" value="#{gpMB.gp.data}" pattern="dd/MM/yyyy" style="width: 98%"
+                                     mask="99/99/9999"/>
+                    </div> 
+                </div>
+                
+                <div class="ui-g">
+                    <div class="ui-g-6">
+                        <label>Pilotos</label><br/>
+                        <p:selectOneMenu id="piloto" value="#{gpMB.corrida.piloto}" style="width: 95%"
+                                         converter="entityConverter">
+                            <f:selectItem itemLabel="Selecione um piloto" noSelectionOption="true"/>
+                            <f:selectItems value="#{pilotoMB.pilotos}" var="piloto"
+                                           itemLabel="#{piloto.nome}" itemValue="#{piloto}"/>
+                            <p:ajax event="change"/> 
+                        </p:selectOneMenu>
+                    </div>
+                    <div class="ui-g-2">
+                        <label>Posição Final:</label><br/>
+                            <p:spinner id="posicao" value="#{gpMB.corrida.posicao}" min="1" max="10" />
+                    </div>
+                    <div class="ui-g-2">
+                        <br/>
+                        <p:commandButton id="add" action="#{gpMB.addPiloto()}" value="Adicionar" 
+                                         icon="ui-icon-plus" update= "piloto, posicao, posicaoPiloto, growl"/>
                     </div>
                 </div>
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <p:dataTable id="posicaoPiloto" value="#{gpMB.corridas}" var="posicao"
+                                     emptyMessage="Nenhum piloto adicionado">
+                            <p:column headerText="Posicao" width="200" sortBy="#{posicao.posicao}">
+                                #{posicao.posicao}
+                            </p:column>
+                            <p:column headerText="Piloto" style="text-align: center;">
+                                #{posicao.piloto.nome}
+                            </p:column>
+                            <p:column headerText="Pontos" width="200" style="text-align: center;">
+                                #{posicao.pontos}
+                            </p:column>
+                            
+                            
+                            <p:column headerText="Excluir" width="80" style="text-align: center;">
+                                <p:commandButton id="excluir" action="#{gpMB.removePiloto(posicao)}" icon="ui-icon-trash"
+                                                 update="posicaoPiloto" immediate="true"/>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+                
                 <br/>
                 <div align="center">
                     <p:commandButton action="#{gpMB.alterar()}" value="Alterar" update="growl" style="margin-right: 10px;"/>
