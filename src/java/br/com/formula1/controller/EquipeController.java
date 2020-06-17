@@ -21,7 +21,6 @@ public class EquipeController implements Serializable{
     }
     
     public void listar(){
-        System.out.println("Entrou");
         equipes = equipeService.listar();
     }
     

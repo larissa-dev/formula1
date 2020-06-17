@@ -11,7 +11,7 @@ public class GpDao {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            List<Gp> gp = session.createQuery("from Gp order by data").list();
+            List<Gp> gp = session.createQuery("from Gp  order by data").list();
             session.getTransaction().commit();
             return gp;
         }catch(Exception e){

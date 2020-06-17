@@ -32,7 +32,6 @@ public class GpController implements Serializable{
     }
     
     public void listar(){
-        System.out.println("Entrou");
         gps = gpService.listar();
     }
     
